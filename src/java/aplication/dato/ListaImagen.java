@@ -32,13 +32,13 @@ public class ListaImagen implements Serializable{
     }
     
     public void llenarListado(Date unaFecha,byte[] unaImagen){
-        if(listaImagenes.isEmpty()){
-            contImagen=0;
+        if(getListaImagenes().isEmpty()){
+            contImagen=1+1;
         }
         else{
-            contImagen=listaImagenes.size();
+            setContImagen(getListaImagenes().size());
         }
-        listaImagenes.add(new Imagen(contImagen,unaImagen,unaFecha));
+        getListaImagenes().add(new Imagen(getContImagen(),unaImagen,unaFecha));
     }
     
 

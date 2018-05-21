@@ -62,10 +62,21 @@ public class ImagenFormBean implements Serializable{
                 return null;
             }
             else{
-                return new DefaultStreamedContent(new ByteArrayInputStream(getNuevaImagen()));
+                return new DefaultStreamedContent(new ByteArrayInputStream(getImagen()), "img");
             }
         }
     }
+    
+    public StreamedContent getImagenSubida() throws IOException{
+        FacesContext context=FacesContext.getCurrentInstance();
+        if(context.getCurrentPhaseId()==PhaseId.RENDER_RESPONSE){
+            return new DefaultStreamedContent();
+        }
+        else{
+            return new DefaultStreamedContent(new ByteArrayInputStream(getImagen()),"img");
+        }
+    }
+    
     public void reiniciarImagen(){
         setListadoImagenes(new ListaImagen());
     }
